@@ -77,7 +77,7 @@ export const upsertContactController = async (req, res, next) => {
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
 
-  const result = await updateContact(contactId.req.body, {
+  const result = await updateContact(contactId, req.body, {
     upsert: true,
   });
 
