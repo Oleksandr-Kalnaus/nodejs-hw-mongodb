@@ -47,9 +47,5 @@ export const contactUpdateSchema = Joi.object({
     .valid(...typeList)
     .min(3)
     .max(20)
-    .optional()
-    .messages({
-      'string.min': 'Contact type should have at least 3 characters.',
-      'string.max': 'Contact type should have at most 20 characters.',
-    }),
+    .optional(),
 });
