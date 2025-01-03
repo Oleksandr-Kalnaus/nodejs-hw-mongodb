@@ -28,3 +28,24 @@ export const userLoginSchema = Joi.object({
     'string.empty': 'Password should have at least 6 characters.',
   }),
 });
+
+export const requestResetEmailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegepx).required().messages({
+    'string.required': 'Email is required.',
+    'string.empty': 'Email is required.',
+  }),
+});
+
+export const resetPasswordSchema = Joi.object({
+  token: Joi.string().required(),
+  password: Joi.string().required().messages({
+    'string.required': 'Password is required.',
+    'string.empty': 'Password is required.',
+
+    'string.empty': 'Email should be looks: "example@mail.com".',
+  }),
+  password: Joi.string().required().messages({
+    'string.required': 'Password is required.',
+    'string.empty': 'Password should have at least 6 characters.',
+  }),
+});
