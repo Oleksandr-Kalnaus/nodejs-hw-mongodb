@@ -10,6 +10,8 @@ import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { sortByList } from './../db/models/Contacts.js';
 import { parseContactFilterParams } from '../utils/filters/parseContactFilterParams.js';
+import { env } from '../utils/env.js';
+import { saveFile } from '../utils/saveFile.js';
 
 export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -51,7 +53,14 @@ export const getContactByIdController = async (req, res) => {
 export const createContactController = async (req, res) => {
   const { _id: userId } = req.user;
 
-  const contact = await createContact({ ...req.body, userId });
+  let photoUrl;
+  if (req.file) {
+    photoUrl = await saveFile(req.file);
+  }
+
+  const contactData = { ...req.body, userId, ...(photoUrl && { photoUrl }) };
+
+  const contact = await createContact(contactData);
 
   res.status(201).json({
     status: 201,
@@ -76,17 +85,21 @@ export const upsertContactController = async (req, res) => {
   const { contactId } = req.params;
   const { _id: userId } = req.user;
 
-  const result = await updateContact(
-    { _id: contactId, userId },
-    { ...req.body, userId },
-    {
-      upsert: true,
-    },
-  );
+  let photoUrl;
+  if (req.file) {
+    photoUrl = await saveFile(req.file);
+  }
+
+  const updateData = { ...req.body, userId, ...(photoUrl && { photoUrl }) };
+
+  const result = await updateContact({ _id: contactId, userId }, updateData, {
+    upsert: true,
+  });
 
   if (!result) {
     throw createHttpError(404, 'Contact not found');
   }
+
   const status = result.isNew ? 201 : 200;
   res.status(status).json({
     status,
@@ -99,7 +112,14 @@ export const patchContactController = async (req, res) => {
   const { contactId } = req.params;
   const { _id: userId } = req.user;
 
-  const result = await updateContact({ _id: contactId, userId }, req.body);
+  let photoUrl;
+  if (req.file) {
+    photoUrl = await saveFile(req.file);
+  }
+
+  const updateData = { ...req.body, ...(photoUrl && { photoUrl }) };
+
+  const result = await updateContact({ _id: contactId, userId }, updateData);
 
   if (!result) {
     throw createHttpError(404, 'Contact not found');

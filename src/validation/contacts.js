@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import { typeList } from '../constants/contacts.js';
+import { emailRegepx } from '../constants/users.js';
 
 export const contactCreateSchema = Joi.object({
   name: Joi.string().required().min(3).max(20).messages({
@@ -13,7 +14,8 @@ export const contactCreateSchema = Joi.object({
     'string.min': 'Phone number should have at least 3 characters.',
     'string.max': 'Phone number should have at most 20 characters.',
   }),
-  email: Joi.string().min(3).max(20).messages({
+  email: Joi.string().email(emailRegepx).min(3).max(20).messages({
+    'string.email': 'Email must be a valid email address.',
     'string.min': 'Email should have at least 3 characters.',
     'string.max': 'Email should have at most 20 characters.',
   }),
@@ -27,6 +29,9 @@ export const contactCreateSchema = Joi.object({
       'string.min': 'Contact type should have at least 3 characters.',
       'string.max': 'Contact type should have at most 20 characters.',
     }),
+  photoUrl: Joi.string().uri().optional().messages({
+    'string.uri': 'Photo URL must be a valid URI.',
+  }),
 });
 
 export const contactUpdateSchema = Joi.object({
@@ -38,7 +43,8 @@ export const contactUpdateSchema = Joi.object({
     'string.min': 'Phone number should have at least 3 characters.',
     'string.max': 'Phone number should have at most 20 characters.',
   }),
-  email: Joi.string().min(3).max(20).optional().messages({
+  email: Joi.string().email(emailRegepx).min(3).max(20).optional().messages({
+    'string.email': 'Email must be a valid email address.',
     'string.min': 'Email should have at least 3 characters.',
     'string.max': 'Email should have at most 20 characters.',
   }),
@@ -48,4 +54,7 @@ export const contactUpdateSchema = Joi.object({
     .min(3)
     .max(20)
     .optional(),
+  photoUrl: Joi.string().uri().optional().messages({
+    'string.uri': 'Photo URL must be a valid URI.',
+  }),
 });
