@@ -13,7 +13,7 @@ import jwt from 'jsonwebtoken';
 import handlebars from 'handlebars';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import { getEnvVar } from './../utils/getEnvVar';
+import { getEnvVar } from './../utils/getEnvVar.js';
 
 const createSessionData = () => ({
   accessToken: randomBytes(30).toString('base64'),
