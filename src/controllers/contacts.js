@@ -10,7 +10,6 @@ import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { sortByList } from './../db/models/Contacts.js';
 import { parseContactFilterParams } from '../utils/filters/parseContactFilterParams.js';
-import { env } from '../utils/env.js';
 import { saveFile } from '../utils/saveFile.js';
 
 export const getContactsController = async (req, res) => {
