@@ -1,0 +1,52 @@
+tags:
+  - Auth
+summary: Register a new user
+operationId: register
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: John Doe
+          email:
+            type: string
+            format: email
+            example: john.doe@example.com
+          password:
+            type: string
+            format: password
+            example: 'password123'
+responses:
+  '201':
+    description: User registered successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered a user!
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: '1234567890abcdef'
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: john.doe@example.com
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '409':
+    $ref: ../../components/responses/409.yaml

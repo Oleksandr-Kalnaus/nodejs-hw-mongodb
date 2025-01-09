@@ -1,0 +1,21 @@
+tags:
+  - Contacts
+summary: Create a new contact
+operationId: createContact
+description: "Add a new contact to the user's list"
+security:
+  - bearerAuth: []
+requestBody:
+  description: 'Contact data'
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        $ref: ../../components/schemas/newContact.yaml
+responses:
+  '201':
+    $ref: ../../components/responses/201.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '401':
+    $ref: ../../components/responses/401.yaml
