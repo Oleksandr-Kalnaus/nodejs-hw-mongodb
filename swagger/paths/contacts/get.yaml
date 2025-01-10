@@ -28,12 +28,6 @@ parameters:
       type: string
       enum: ['asc', 'desc']
       example: 'asc'
-  - in: query
-    name: filter
-    schema:
-      type: string
-      example: 'personal'
-      description: "All contact's fields can be mentioned"
 responses:
   '200':
     description: Successfully found contacts!

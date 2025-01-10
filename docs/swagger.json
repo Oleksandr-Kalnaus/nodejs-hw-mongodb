@@ -11,10 +11,10 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3000/api-docs"
     },
     {
-      "url": "https://your-deployed-api.com"
+      "url": "https://nodejs-hw-mongodb-j6tx.onrender.com"
     }
   ],
   "security": [
@@ -82,15 +82,6 @@
                 "desc"
               ],
               "example": "asc"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter",
-            "schema": {
-              "type": "string",
-              "example": "personal",
-              "description": "All contact's fields can be mentioned"
             }
           }
         ],
@@ -1136,17 +1127,11 @@
       "newContact": {
         "type": "object",
         "required": [
-          "_id",
           "name",
           "phoneNumber",
           "contactType"
         ],
         "properties": {
-          "_id": {
-            "description": "Contact's Id",
-            "type": "string",
-            "example": "65ca67e7ae7f10c88b598384"
-          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -1176,12 +1161,7 @@
               "personal"
             ]
           },
-          "userId": {
-            "description": "Contact's user id",
-            "type": "string",
-            "example": "65ca67e7ae7f10c88b598384"
-          },
-          "photoUrl": {
+          "photo": {
             "description": "Link to contact's photo",
             "type": "string",
             "example": "https://res.cloudinary.com/dvrcfl56q/image/upload/v1736095485/lnljhqeyqwldxj3jvofz.png",
