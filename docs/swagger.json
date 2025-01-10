@@ -11,9 +11,6 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api-docs"
-    },
-    {
       "url": "https://nodejs-hw-mongodb-j6tx.onrender.com"
     }
   ],
