@@ -4,6 +4,13 @@ tags:
   - Auth
 security:
   - bearerAuth: []
+parameters:
+  - in: cookie
+    name: refreshToken
+    required: true
+    schema:
+      type: string
+    description: Refresh token, transmitted via cookies
 responses:
   '204':
     description: User logged out successfully

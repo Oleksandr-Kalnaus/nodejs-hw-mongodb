@@ -328,6 +328,22 @@
                     "type": "string",
                     "example": "+1234567890"
                   },
+                  "email": {
+                    "type": "string",
+                    "example": "john.doe@example.com"
+                  },
+                  "isFavorite": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "contactType": {
+                    "type": "string",
+                    "enum": [
+                      "work",
+                      "home",
+                      "personal"
+                    ]
+                  },
                   "photo": {
                     "type": "string",
                     "format": "binary",
@@ -403,11 +419,27 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Jane Doe"
                   },
                   "phoneNumber": {
                     "type": "string",
                     "example": "+1234567890"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "john.doe@example.com"
+                  },
+                  "isFavorite": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "contactType": {
+                    "type": "string",
+                    "enum": [
+                      "work",
+                      "home",
+                      "personal"
+                    ]
                   },
                   "photo": {
                     "type": "string",
@@ -647,6 +679,17 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "refreshToken",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Refresh token, transmitted via cookies"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Session refreshed successfully",
@@ -727,6 +770,17 @@
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "cookie",
+            "name": "refreshToken",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Refresh token, transmitted via cookies"
           }
         ],
         "responses": {
