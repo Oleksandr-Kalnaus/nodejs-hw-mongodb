@@ -318,38 +318,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "Jane Doe"
-                  },
-                  "phoneNumber": {
-                    "type": "string",
-                    "example": "+1234567890"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "john.doe@example.com"
-                  },
-                  "isFavorite": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "contactType": {
-                    "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ]
-                  },
-                  "photo": {
-                    "type": "string",
-                    "format": "binary",
-                    "description": "Photo file"
-                  }
-                }
+                "$ref": "#/components/schemas/updateContact"
               }
             }
           }
@@ -415,38 +384,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "Jane Doe"
-                  },
-                  "phoneNumber": {
-                    "type": "string",
-                    "example": "+1234567890"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "john.doe@example.com"
-                  },
-                  "isFavorite": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "contactType": {
-                    "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ]
-                  },
-                  "photo": {
-                    "type": "string",
-                    "format": "binary",
-                    "description": "Photo file"
-                  }
-                }
+                "$ref": "#/components/schemas/updateContact"
               }
             }
           }
@@ -1227,11 +1165,6 @@
           "userId"
         ],
         "properties": {
-          "_id": {
-            "description": "Contact's Id",
-            "type": "string",
-            "example": "65ca67e7ae7f10c88b598384"
-          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -1261,12 +1194,7 @@
               "personal"
             ]
           },
-          "userId": {
-            "description": "Contact's user id",
-            "type": "string",
-            "example": "65ca67e7ae7f10c88b598384"
-          },
-          "photoUrl": {
+          "photo": {
             "description": "Link to contact's photo",
             "type": "string",
             "example": "https://res.cloudinary.com/dvrcfl56q/image/upload/v1736095485/lnljhqeyqwldxj3jvofz.png",
